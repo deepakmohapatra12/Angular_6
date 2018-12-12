@@ -1,0 +1,44 @@
+
+ <div class="container">
+  <div class="row">
+    <div class="col-md-6" style="text-align:center">
+   <h3>CRUD OPERATION in Angular with typescript</h3>
+ </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <span (click)="addNewPost()" class="btn btn-primary btn-xs">Add New Post</span>
+      <br/><br/>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <th>PostID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <!-- <th>Category</th> -->
+            <!-- <th>Create Date</th> -->
+            <th>Edit</th>
+            <th>Delete</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of postList">
+              <td>{{item.id}}</td>
+              <td>{{item.title}}</td>
+              <td>{{item.description}}</td>
+              <!-- <td>{{item.categoryName}}</td> -->
+              <!-- <td>{{item.createdDate}}</td> -->
+              <td><span class="btn btn-primary btn-xs" (click)="editPost(item.id)">
+               <span class="glyphicon glyphicon-pencil"></span>
+              </span></td>
+              <td>
+                <span class="btn-danger btn-xs" (click)="deletePost(item.id)">
+                  <span class="glyphicon glyphicon-trash"></span>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

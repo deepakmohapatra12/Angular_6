@@ -1,16 +1,80 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ToastrModule } from 'ng6-toastr-notifications';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {TableModule} from 'primeng/table';
+import {PaginatorModule} from 'primeng/paginator';
+import {ModalModule,BsModalService} from 'ngx-bootstrap/modal';
+import {NgxPaginationModule} from 'ngx-pagination'; 
+import { Ng2OrderModule } from 'ng2-order-pipe'; //importing the module
+import { Ng2SearchPipeModule } from 'ng2-search-filter';//for search filter
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { RouterModule, Routes } from '@angular/router';
 
-import { AppComponent } from './app.component';
+import { AppComponent }  from './app.component';
+import {HttpClientModule} from '@angular/common/http';
+import { TestData } from './test-data';
+import { CreateComponent } from './employee/create.component';
+import { ListComponent } from './employee/list.component';
+import { PraticeComponent } from './employee/pratice/pratice.component';
+import { TeamManagementService } from './employee/pratice/team-management.service';
+import { AddNewPostComponent } from './Blog/add-new-post/add-new-post.component';
+import { EditPostComponent } from './Blog/edit-post/edit-post.component';
+import { DeletePostComponent } from './Blog/delete-post/delete-post.component';
+import { BlogService } from './Blog/blog.service';
+import { MainComponent } from './Blog/main/main.component';
+
+const appRoutes: Routes = [
+      { path: 'create', component: CreateComponent },
+      { path: 'list',component: ListComponent },
+      { path: 'edit/:id', component: CreateComponent },
+      {path:'pratice',component:PraticeComponent},
+      {path:'main',component:MainComponent}
+
+    ];
 
 @NgModule({
+  imports: [     
+            BrowserModule,
+            HttpModule,
+            HttpClientModule,
+            BsDatepickerModule.forRoot(),
+            NgxPaginationModule,
+            Ng2OrderModule,
+            Ng2SearchPipeModule,
+            ReactiveFormsModule,
+            FormsModule,
+            BrowserAnimationsModule,
+            TableModule,
+            PaginatorModule,
+            NgbModule.forRoot(),
+            ModalModule.forRoot(),
+            ToastrModule.forRoot(),
+            RouterModule.forRoot(
+                  appRoutes,
+                  { enableTracing: true } // <-- debugging purposes only
+                )
+  ],
   declarations: [
-    AppComponent
+        AppComponent,
+        CreateComponent,
+        ListComponent,
+        PraticeComponent,
+        AddNewPostComponent,
+        EditPostComponent,
+        DeletePostComponent,
+        MainComponent,
   ],
-  imports: [
-    BrowserModule
+  providers: [
+      TeamManagementService,BlogService,BsModalService
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+        AppComponent
+  ],
+  entryComponents:[AddNewPostComponent, DeletePostComponent, EditPostComponent]
+
 })
 export class AppModule { }

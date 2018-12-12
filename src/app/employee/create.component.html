@@ -1,0 +1,45 @@
+<h3 *ngIf="articleToUpdate; else create"> 
+  Update Article
+</h3>
+<ng-template #create>
+  <h3> Create New Article </h3>
+</ng-template>
+<div><div class="container">
+  <div class="row">
+    <div class="panel-success">
+      <div class="panel-body">
+        <form [formGroup]="articleForm" (ngSubmit)="onArticleFormSubmit()">
+          <div class="form-group">
+            <input type="text" formControlName="title" class="form-control" placeholder="Enter article title">
+            <span *ngIf="articleForm.get('title').invalid && processValidation" [ngClass]="'error'">
+              Title is required
+            </span>
+          </div>
+
+          <div class="form-group">
+            <input type="text" formControlName="category" class="form-control" placeholder="Enter category">
+            <span *ngIf="articleForm.get('category').invalid && processValidation" [ngClass]="'error'">
+              Category is required
+            </span>
+          </div>
+
+          <!-- <div class="form-group">
+              <label for="dateOfBirth">Date of Birth</label>
+              <input id="dateOfBirth" name="dateOfBirth" formControlName="date"
+                      type="text" bsDatepicker class="form-control" />
+            </div> -->
+
+          <br />
+          <div class="row text-center">
+            <button class="btn btn-success" *ngIf="!articleToUpdate">
+              Create
+            </button>
+            <button class="btn btn-primary" *ngIf="articleToUpdate">
+              Update
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="row">
+    <h3>Create New Team</h3>
+    <button type="button" class="btn btn-primary" (click)="loadTeam('Java Team')">
+      Load Default Team
+    </button>
+    <button type="button" class="btn btn-primary" (click)="resetTeamForm()">
+      Reset
+    </button>
+  </div>
+  <br/>
+  <div *ngIf="formSubmitted && teamForm.pristine" class="submitted">
+    Form submitted Successfully
+  </div>
+  <div class="team">
+    <form [formGroup]="teamForm" (ngSubmit)="onFormSubmit()">
+      <div class="form-group">
+        <label for="">Team Name</label>
+        <input type="text" class="form-control" formControlName="teamName">
+        <span *ngIf="teamForm.get('teamName').invalid &&
+        teamForm.get('teamName').dirty" class="error">Team
+          Name is required</span>
+      </div>
+
+      <div class="form-group">
+        <label for="">Team Manager</label>
+        <input type="text" class="form-control" formControlName="teamManager">
+      </div>
+      <div class="form-group">
+        <h3>Department</h3>
+        <hr>
+        <div class="form-group department" formGroupName="teamDept">
+          <label for="">Department Head</label>
+          <input type="text" class="form-control" formControlName="deptHead">
+          <br />
+          <label for="">Department Name</label>
+          <input type="text" class="form-control" formControlName="deptName">
+        </div>
+      </div>
+      <!--dynamic from generating-->
+      <div class="all-emp">
+        <h3>Employees in Team</h3>
+        <div formArrayName="employees">
+          <div *ngFor="let emp of empFormArray.controls;let idx = index" [formGroupName]="idx" class="employee">
+            <p><b>Employee:{{idx+1}}</b></p>
+            <div class="form-group">
+              <label>Emp ID</label>
+              <input type="text" class="form-control" formControlName="empId">
+            </div>
+            <div class="form-group">
+              <label for="">Emp Name</label>
+              <input type="text" class="form-control" formControlName="empName">
+            </div>
+            <div class="form-group">
+              <label for="">Skills</label>
+              <select formControlName="skill" class="from-control">
+                <option *ngFor="let skill of allSkills | async" [ngValue]="skill.name">
+                  {{skill.displayName}}
+                </option>
+              </select>
+            </div>
+            <div class="row">
+              <button type="button" class="btn btn-danger" (click)="deleteEmployee(idx)">
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <button type="button" class="btn btn-success" (click)="addEmployee()">Add more employee</button>
+        </div>
+        <br />
+      </div>
+      <!--dynamic from generating-->
+      <button class="btn btn-success" [disabled]="teamForm.invalid">SUBMIT</button>
+    </form>
+  </div>
+</div>
