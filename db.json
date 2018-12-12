@@ -1,0 +1,97 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Android AsyncTask Example",
+      "category": "Android"
+    },
+    {
+      "title": "Poja kapoor",
+      "category": "Pooja ",
+      "id": 3
+    },
+    {
+      "title": "roopa",
+      "category": "roopa",
+      "id": 4
+    },
+    {
+      "title": "simba trailer",
+      "category": "simba",
+      "id": 5
+    },
+    {
+      "title": "pooja singh",
+      "category": "nigga",
+      "id": 6
+    },
+    {
+      "title": "aila simba re",
+      "category": "aila simba re",
+      "id": 7
+    },
+    {
+      "title": "siyaram",
+      "category": "info",
+      "id": 8
+    },
+    {
+      "title": "bandana  kapoor",
+      "category": "bandana ",
+      "id": 10
+    },
+    {
+      "title": "aila simba re",
+      "category": "aila simba re",
+      "id": 11
+    },
+    {
+      "title": "siyaram",
+      "category": "info",
+      "id": 12
+    },
+    {
+      "title": "bandana  kapoor",
+      "category": "bandana ",
+      "id": 13
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "description": "typicode",
+      "categoryName": "sql Server"
+    },
+    {
+      "id": 2,
+      "title": "Pooja",
+      "description": "Pooja kapoor",
+      "categoryName": "Pooja Server"
+    },
+    {
+      "id": 3,
+      "title": "Roopa",
+      "description": "Pooja kapoor",
+      "categoryName": "Pooja Server"
+    },
+    {
+      "id": 4,
+      "title": "Deepak",
+      "description": "Pooja kapoor",
+      "categoryName": "Pooja Server"
+    },
+    {
+      "id": 5,
+      "title": "Alok",
+      "description": "Pooja kapoor",
+      "categoryName": "Pooja Server"
+    },
+    {
+      "id": 6,
+      "title": "Nikitha",
+      "description": "Pooja kapoor",
+      "categoryName": "Pooja Server"
+    }
+  ]
+}
