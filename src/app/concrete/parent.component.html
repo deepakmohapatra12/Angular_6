@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <th>ID</th>
+                    <th>firstname</th>
+                    <th>lastname</th>
+                    <th>email</th>
+                    <th>mobilenumber</th>
+                    <th>departments</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of allUsers">
+                        <td>{{user.id}}</td>
+                        <td>{{user.firstname | uppercase}}</td>
+                        <td>{{user.lastname | lowercase}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.mobile}}</td>
+                        <td>{{user.department}}</td>
+                        <td><a (click)="editUser(user.id)" class="btn btn-primary">Edit</a></td>
+                        <td><a (click)="deleteUser(user.id)" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

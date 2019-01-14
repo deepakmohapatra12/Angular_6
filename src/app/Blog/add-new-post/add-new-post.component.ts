@@ -30,7 +30,7 @@ export class AddNewPostComponent implements OnInit {
     if (this.addNewPostForm.invalid) {
       return;
     }
-    let postData = this.addNewPostForm.value;
+    let postData = this.addNewPostForm.value;//get the value of all input field
     this.blogService.addPost(postData).subscribe(data => {
       console.log(data);
       this.resetform();
@@ -39,10 +39,11 @@ export class AddNewPostComponent implements OnInit {
     });
   }
 
+  //reset the from
   resetform() {
     this.addNewPostForm.reset();
   }
-
+//close the modal
   onClose() {
     this.bsModalRef.hide();
   }

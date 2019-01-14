@@ -1,0 +1,118 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h2 class="text-center">Create</h2>
+                </div>
+                <div class="panel-body">
+                    <form class="horizontal"
+                     [formGroup]="userForm"
+                      (ngSubmit)="onFormSubmit()">
+                        <div class="form-group">
+                            <label>FirstName</label>
+                            <input formControlName="firstname" type="text" class="form-control">
+                            <span *ngIf="submitted && p.firstname.errors && processValidation" class="help-block">
+                                <span *ngIf="p.firstname.errors.required">FirstName is required</span>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label>LastName</label>
+                            <input type="text" class="form-control" formControlName="lastname">
+                            <span *ngIf="submitted && p.lastname.errors && processValidation" class="help-block">
+                                <span *ngIf="p.lastname.errors.required">Lastname is required</span>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Email</label>
+                            <input type="text" class="form-control" formControlName="email">
+                            <span *ngIf="submitted && p.email.errors && processValidation" class="help-block">
+                                <span *ngIf="p.email.errors.required">Email is Required</span>
+                                <span *ngIf="p.email.errors.email">Enter a Valid Email</span>
+                            </span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Mobile Number</label>
+                            <input type="number" class="form-control" formControlName="mobile">
+                            <span *ngIf="submitted && p.mobile.errors && processValidation" class="help-block">
+                                <span *ngIf="p.mobile.errors.required">Mobile Number is required</span>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-inline">
+                                <label for="">Gender</label>
+                            </div>
+                            <label class="radio-inline">
+                                <input type="radio" formControlName="gender" value="one" />Male
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" formControlName="gender" value="two" />Female
+                                <span *ngIf="submitted && p.gender.errors && processValidation">
+                                    <span *ngIf="p.gender.errors.required">Gender is required</span>
+                                </span>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Departments</label>
+                            <select class="form-control" formControlName="department" *ngIf="getDepartments()">
+                                <option [ngValue]="null">--Select department--</option>
+                                <option *ngFor="let depart of getDepartments()" value="{{depart.name}}">
+                                    {{depart.name}}
+                                </option>
+                            </select>
+                            <span *ngIf="submitted && p.department.errors && processValidation" class="help-block">
+                                <span *ngIf="p.department.errors.required">
+                                    Departments selection required
+                                </span>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label>Country</label>
+                            <select *ngIf="getCountries()" (change)="onSelectCountry($event.target.value)" id="country"
+                                formControlName="country" class="form-control">
+                                <option [ngValue]="null">--Select Countries--</option>
+                                <option *ngFor="let country of getCountries()" value={{country.id}}>
+                                    {{country.name}}
+                                </option>
+                            </select>
+                            <span *ngIf="submitted && p.country.errors && processValidation">
+                                <span *ngIf="p.country.errors.required">Country selection is required</span>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="">State</label>
+                            <select class="form-control" formControlName="state">
+                                <option *ngIf="!selectedCountry" [ngValue]="null">--Select State--</option>
+                                <option *ngFor="let state of states" value="{{state.id}}">
+                                    {{state.name}}
+                                </option>
+                            </select>
+                            <span *ngIf="submitted && p.state.errors && processValidation">
+                                <span *ngIf="p.state.errors.required">State selection is required</span>
+                            </span>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" formControlName="terms">Accept the terms and agreements
+                                    <span *ngIf="submitted && p.terms.errors && processValidation">
+                                        <span *ngIf="p.terms.errors.required">Please check the terms and condition</span>
+                                    </span>
+                                </label>
+
+                            </div>
+                        </div>
+                        <div class="row text-center">
+                            <button class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>

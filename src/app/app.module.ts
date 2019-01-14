@@ -26,14 +26,23 @@ import { EditPostComponent } from './Blog/edit-post/edit-post.component';
 import { DeletePostComponent } from './Blog/delete-post/delete-post.component';
 import { BlogService } from './Blog/blog.service';
 import { MainComponent } from './Blog/main/main.component';
+import { NgtemplatengforComponent } from './concrete/ngtemplatengfor.component';
+import { MessageDirective } from './concrete/message.directive';
+import { ParentComponent } from './concrete/parent.component';
+import { DemopraticeComponent } from './concrete/demopratice.component';
+import { CpDirective } from './concrete/cp.directive';
 
 const appRoutes: Routes = [
       { path: 'create', component: CreateComponent },
       { path: 'list',component: ListComponent },
       { path: 'edit/:id', component: CreateComponent },
       {path:'pratice',component:PraticeComponent},
-      {path:'main',component:MainComponent}
-
+      {path:'main',component:MainComponent},
+      {path:'ngTemplate',component:NgtemplatengforComponent},
+      {path:'useredit/:id',component:NgtemplatengforComponent},
+      {path:'listMain',component:ParentComponent},
+      {path:'demopratice',component:DemopraticeComponent},
+      {path:'my-book/:id',component:DemopraticeComponent}
     ];
 
 @NgModule({
@@ -54,8 +63,7 @@ const appRoutes: Routes = [
             ModalModule.forRoot(),
             ToastrModule.forRoot(),
             RouterModule.forRoot(
-                  appRoutes,
-                  { enableTracing: true } // <-- debugging purposes only
+                  appRoutes
                 )
   ],
   declarations: [
@@ -67,6 +75,12 @@ const appRoutes: Routes = [
         EditPostComponent,
         DeletePostComponent,
         MainComponent,
+        NgtemplatengforComponent,
+        ParentComponent,
+        DemopraticeComponent,
+        CpDirective,
+        MessageDirective
+     
   ],
   providers: [
       TeamManagementService,BlogService,BsModalService

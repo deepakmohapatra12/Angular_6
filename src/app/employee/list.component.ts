@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { ArticleService } from './article.service';
 import { Article } from './article';
 import { Router } from '@angular/router';
@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
+
 
   allArticles;
   //primeng property
@@ -43,16 +44,27 @@ export class ListComponent implements OnInit {
 
   //delete article by Id
   deleteArticle(articleId: any) {
-    if (confirm('Are you sure!'))
+  if (confirm('Are you sure!'))
       this.articleService.deleteArticleById(articleId)
         .subscribe(() => {
           this.getAllArticles();
         })
   }
-
   //this function redirect to the edit aka createcomponent with the ID.
   editButtonClick(articleId: number) {
     this._router.navigate(['/edit', articleId])
   }
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
