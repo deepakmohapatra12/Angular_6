@@ -4,7 +4,9 @@ import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/toPromise';
 import {Person} from './person';
+import { User } from './user';
 
 
 const httpOptions = {
@@ -57,13 +59,12 @@ export class UserService {
     .catch(this.handleError)
   }
 
- 
-
   deleteUser(userId):Observable<Person>{
     return this.http.delete<any>(this.userFormUrl+"/"+userId,httpOptions)
     .catch(this.handleError)
   }
 
+  
 
   
 

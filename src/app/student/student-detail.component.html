@@ -1,0 +1,11 @@
+<div class="grid raisebox">
+  <a *ngFor="let student of studentsData" class="col-1-4">
+    <div class="module">
+      <h4 class="badge">RollNo:{{student.RollNo}}</h4>
+      <h4 class="badge">Name:{{student.Name}}</h4>
+      <h4>
+        <input (change)="valueChanged(student)"  [(ngModel)]="student.Marks" placeholder="Marks" type="text">
+      </h4>
+    </div>
+  </a>
+</div>

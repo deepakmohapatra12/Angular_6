@@ -31,6 +31,9 @@ import { MessageDirective } from './concrete/message.directive';
 import { ParentComponent } from './concrete/parent.component';
 import { DemopraticeComponent } from './concrete/demopratice.component';
 import { CpDirective } from './concrete/cp.directive';
+import { StudentDetailComponent } from './student/student-detail.component';
+import { MainShowComponent } from './student/main-show.component';
+import { StudentRecordService } from './student/student-record.service';
 
 const appRoutes: Routes = [
       { path: 'create', component: CreateComponent },
@@ -42,7 +45,8 @@ const appRoutes: Routes = [
       {path:'useredit/:id',component:NgtemplatengforComponent},
       {path:'listMain',component:ParentComponent},
       {path:'demopratice',component:DemopraticeComponent},
-      {path:'my-book/:id',component:DemopraticeComponent}
+      {path:'my-book/:id',component:DemopraticeComponent},
+      {path:'main-show-student',component:MainShowComponent}
     ];
 
 @NgModule({
@@ -79,11 +83,13 @@ const appRoutes: Routes = [
         ParentComponent,
         DemopraticeComponent,
         CpDirective,
-        MessageDirective
+        MessageDirective,
+        StudentDetailComponent,
+        MainShowComponent
      
   ],
   providers: [
-      TeamManagementService,BlogService,BsModalService
+      TeamManagementService,BlogService,BsModalService,StudentRecordService
   ],
   bootstrap: [
         AppComponent

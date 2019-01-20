@@ -1,48 +1,51 @@
-import { Component, OnInit,ViewChild,ElementRef } from '@angular/core';
-import {User} from './user';
-import {Observable} from 'rxjs';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { User } from './user';
+import { Observable } from 'rxjs';
 import { FormControl, FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
-import {UserService} from './user.service';
-import {ActivatedRoute} from '@angular/router';
+import { UserService } from './user.service';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-ngtemplatengfor',
   templateUrl: './ngtemplatengfor.component.html',
   styleUrls: ['./ngtemplatengfor.component.css']
 })
 export class NgtemplatengforComponent implements OnInit {
-   departments:Array<any> = [];
-   states:Array<any> = [];
 
-   processValidation = false;
-   userToUpdate = null;
+  mobnumPattern = "^((\\+91-?)|0)?[0-9]{10}$";
 
-   allUsers;
+  departments: Array<any> = [];
+  states: Array<any> = [];
+
+  processValidation = false;
+  userToUpdate = null;
+
+  allUsers;
 
 
-   selectedCountry = 0;
-   selectedState = 0;
+  selectedCountry = 0;
+  selectedState = 0;
 
-  userForm:FormGroup;
+  userForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder:FormBuilder,
-    private userservice:UserService,private _route : ActivatedRoute) {
-      this.getAllUsers();
+  constructor(private formBuilder: FormBuilder,
+    private userservice: UserService, private _route: ActivatedRoute) {
+    this.getAllUsers();
   }
-  
+
   ngOnInit() {
     this.userFormValidation();
     this.fetchIdFromUrl();
   }
 
   //departments array
-  getDepartments(){
+  getDepartments() {
     return [
-      {id:1,name:'IT'},
-      {id:2,name:'CSE'},
-      {id:3,name:'ELECTRICAL'},
-      {id:4,name:'MECH'},
-      {id:5,name:'CIVIL'}
+      { id: 1, name: 'IT' },
+      { id: 2, name: 'CSE' },
+      { id: 3, name: 'ELECTRICAL' },
+      { id: 4, name: 'MECH' },
+      { id: 5, name: 'CIVIL' }
     ]
   }
 
@@ -56,15 +59,14 @@ export class NgtemplatengforComponent implements OnInit {
   }
 
   //on change of country states will be populated 
-  onSelectCountry(country_id:number){
+  onSelectCountry(country_id: number) {
     this.selectedCountry = country_id;
     this.selectedCountry = 0;
-    this.states = this.getStates().filter((item)=>{
+    this.states = this.getStates().filter((item) => {
       return item.country_id === Number(country_id)
     });
   }
 
- 
 
   //states array 
   getStates() {
@@ -79,81 +81,82 @@ export class NgtemplatengforComponent implements OnInit {
   }
 
   //form validation method for userForm
-  userFormValidation(){
+  userFormValidation() {
     this.userForm = this.formBuilder.group({
-      firstname : ['',Validators.required],
-      lastname:['',Validators.required],
-      email:['',[Validators.required,Validators.email]],
-      mobile:['',Validators.required],
-      gender:['',Validators.required],
-      country:['',Validators.required],
-      department:['',Validators.required],
-      state:['',Validators.required],
-      terms:['',Validators.required]
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      mobile: ['', [Validators.required, Validators.pattern(this.mobnumPattern)]],
+      gender: ['', Validators.required],
+      country: ['', Validators.required],
+      department: ['', Validators.required],
+      state: ['', Validators.required],
+      terms: ['', Validators.required]
     })
   }
 
   //for better convience to control the forms
-  get p(){
+  get p() {
     return this.userForm.controls;
   }
 
   //after click on the submit button
-  onFormSubmit():void{
+  onFormSubmit(): void {
     this.submitted = true;
     //stop here if form is invalid
     this.processValidation = true;
-    if(this.userForm.invalid){
+    if (this.userForm.invalid) {
       return;
     }
-      //console.log('Success' + JSON.stringify(this.userForm.value));
-      let userData =  this.userForm.value;
-      this.userservice.createUser(userData)
-      .subscribe(()=>{
+    //console.log('Success' + JSON.stringify(this.userForm.value));
+    let userData = this.userForm.value;
+    this.userservice.createUser(userData)
+      .subscribe(() => {
         this.processValidation = false;
         this.userForm.reset();
       })
   }
- 
-    //fetch id from url and pass to the update operation
-    fetchIdFromUrl(){
-      this._route.paramMap.subscribe(params=>{
-        const userId = +params.get('id');
-        console.log(userId);
-        if(userId){
-          this.getEachUserData(userId)
-        }
-      })
-    }
 
-  getEachUserData(userId:any){
-    this.userservice.getUserById(userId)
-    .subscribe(user=>{
-      this.userToUpdate = user.id;
-      this.userForm.patchValue({
-        firstname:user.firstname,
-        lastname:user.lastname,
-        email:user.email,
-        mobile:user.mobile,
-        department:user.department,
-        gender:user.gender,
-        terms:user.terms
-      })
+
+  //fetch id from url and pass to the update operation
+  fetchIdFromUrl() {
+    this._route.paramMap.subscribe(params => {
+      const userId = +params.get('id');
+      console.log(userId);
+      if (userId) {
+        this.getEachUserData(userId)
+      }
     })
   }
 
-  
+  getEachUserData(userId: any) {
+    this.userservice.getUserById(userId)
+      .subscribe(user => {
+        this.userToUpdate = user.id;
+        this.userForm.patchValue({
+          firstname: user.firstname,
+          lastname: user.lastname,
+          email: user.email,
+          mobile: user.mobile,
+          department: user.department,
+          gender: user.gender,
+          terms: user.terms
+        })
+      })
+  }
 
-  getAllUsers():void{
+
+
+  getAllUsers(): void {
     this.userservice.getUser()
-    .subscribe(
-      data => this.allUsers = data,
-      error => console.log("Error:" + error)
-    )
+      .subscribe(
+        data => this.allUsers = data,
+        error => console.log("Error:" + error)
+      )
   }
 
   //the below function will reset the form after the form submission
-  backToCreate(){
+  backToCreate() {
     this.userForm.reset();
     this.processValidation = false;
   }

@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="wrapper">
+    <div class="column">
+      <app-student-detail [studentsData]="getToppersRecord()" (MarksValueChanged)="trackValueChanged($event)"></app-student-detail>
+    </div>
+    <div class="column">
+      <app-student-detail [studentsData]="getMediocoreRecord()" (MarksValueChanged)="trackValueChanged($event)"></app-student-detail>
+    </div>
+    <div class="column">
+      <app-student-detail [studentsData]="getLowerRecord()" (MarksValueChanged)="trackValueChanged($event)"></app-student-detail>
+    </div>
+  </div>
+</div>

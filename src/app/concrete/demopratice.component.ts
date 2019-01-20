@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output, OnInit, asNativeElements, } from '@angular/core';
 import { ViewChild, ElementRef, AfterViewInit, Renderer2 } from '@angular/core';
 import { ArticleService } from '../employee/article.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { of } from 'rxjs';
 import { NgForm, Validators } from '@angular/forms';
 import 'rxjs/add/observable/of';
@@ -23,9 +23,7 @@ import { BlogService } from '../Blog/blog.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Person } from './person';
 import { MessageDirective } from './message.directive';
-
-
-
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-demopratice',
@@ -37,9 +35,6 @@ export class DemopraticeComponent implements OnInit {
   names = [];
   selected: string = '';
   selectedAll: any;
-  allbook;
-  show = 1;
-
 
 
   categories = [
@@ -56,15 +51,9 @@ export class DemopraticeComponent implements OnInit {
     { name: 'Alok' }
   ]
 
-  name: string;
-  age: number;
-  allPersons: Person[];
-  obsPersons: Observable<Person[]>
-
-
-
-
-  constructor(private renderer: Renderer2, private articleService: ArticleService, private formBuilder: FormBuilder,
+  constructor(private renderer: Renderer2, private articleService: ArticleService,
+    private formBuilder: FormBuilder,
+    private userService: UserService,
     private bsModalService: BsModalService, private blogService: BlogService, private route: ActivatedRoute) {
     this.collections = ["Pooja", "Bandana", "Deepak", "Raghab"];
     //this.names = ["Pooja","Bandana","Raghu","Roopa"];
@@ -74,14 +63,20 @@ export class DemopraticeComponent implements OnInit {
     //   { name: 'Blade', selected: false },
     //   { name: 'Razor', selected: false }
     // ]
+
   }
-
-
-
 
 
   ngOnInit() {
+    
+    
   }
+
+ 
+
+ 
+
+  
 
 
 

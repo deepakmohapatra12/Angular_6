@@ -12,8 +12,9 @@ import { Technology } from '../concrete/technology';
 import { User } from '../concrete/user';
 import {MyCountry} from './my-country';
 import { Person } from '../concrete/person';
-
-
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -67,9 +68,16 @@ export class ArticleService {
   }
 
   bookUrl = "http://localhost:3000/bookDetails";
+  resourceUrl="http://localhost:3000/resources";
+
 
  
- 
+  getAllBooks():Observable<Book[]>{
+    return this.http.get<Book[]>(this.bookUrl)
+    .catch(this.handleError)
+  }
+
+
 
 
 

@@ -38,6 +38,7 @@
                             <input type="number" class="form-control" formControlName="mobile">
                             <span *ngIf="submitted && p.mobile.errors && processValidation" class="help-block">
                                 <span *ngIf="p.mobile.errors.required">Mobile Number is required</span>
+                                <span *ngIf="p.mobile.errors.pattern"> Mobile number not valid.</span> 
                             </span>
                         </div>
                         <div class="form-group">
