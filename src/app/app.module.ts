@@ -34,6 +34,7 @@ import { CpDirective } from './concrete/cp.directive';
 import { StudentDetailComponent } from './student/student-detail.component';
 import { MainShowComponent } from './student/main-show.component';
 import { StudentRecordService } from './student/student-record.service';
+import { DemochildComponent } from './concrete/demochild.component';
 
 const appRoutes: Routes = [
       { path: 'create', component: CreateComponent },
@@ -85,7 +86,8 @@ const appRoutes: Routes = [
         CpDirective,
         MessageDirective,
         StudentDetailComponent,
-        MainShowComponent
+        MainShowComponent,
+        DemochildComponent
      
   ],
   providers: [

@@ -27,6 +27,17 @@ export interface Person{
 }
 
 
+export enum NumEnum{
+    ONE = 1,
+    TWO = 2,
+    THREE = 3
+}
+
+export class Employee {
+    constructor(public id: number, public name: string) { 
+    }
+  }
+
 // export class Person{
 //     constructor(public personId:number,public name:string,public age:number){
 

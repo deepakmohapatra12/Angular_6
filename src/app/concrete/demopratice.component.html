@@ -1,8 +1,31 @@
-<h3>Demo Pratice</h3>
 
 
 
 
+<h1>Demo Pratice</h1>
 
 
 
+<div class="container">
+    <table class="table table-striped">
+            <thead>
+                <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Stock</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of products">
+                    <td>{{p.id}}</td>
+                    <td>{{p.title}}</td>
+                    <td>{{p.price}}</td>
+                    <td>{{p.stock}}</td>
+                    <td>
+                        <app-demochild [productId]='p.id' [stock]='p.stock' (stockValueChange)='changeStockValue($event)'></app-demochild>
+                    </td>
+                </tr>
+            </tbody>
+    </table>
+</div>

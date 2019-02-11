@@ -1,4 +1,7 @@
 <div class="container">
+  <form action="">
+    <input type="text" name="searchData" class="form-control" [(ngModel)]="searchTerm">
+  </form>
   <table class="table table-responsive">
     <thead>
       <tr>
@@ -9,8 +12,8 @@
         <th>Delete</th>
       </tr>
     </thead>
-    <tbody>
-      <tr *ngFor="let article of allArticles">
+    <tbody> 
+      <tr *ngFor="let article of filteredData">
         <td>{{article.id}}</td>
         <td>{{article.title}}</td>
         <td>{{article.category}}</td>
@@ -22,7 +25,7 @@
   </table>
 </div>
 
-<div class="container">
+<!-- <div class="container">
   <p-table [columns]="cols" [value]="allArticles" sortMode="multiple" [paginator]="true" [rows]="5" [totalRecords]="10"
     [rowsPerPageOptions]="[1,5,8]" icon="fa-plus" #dt>
     <ng-template pTemplate="header" let-columns>
@@ -46,7 +49,7 @@
       </tr>
     </ng-template>
   </p-table>
-</div>
+</div> -->
 
 
 

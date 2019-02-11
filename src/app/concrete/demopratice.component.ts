@@ -24,6 +24,9 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Person } from './person';
 import { MessageDirective } from './message.directive';
 import { UserService } from './user.service';
+// import { Employee } from '../employee/pratice/employee';
+import {NumEnum} from './person';
+import {Employee} from './person';
 
 @Component({
   selector: 'app-demopratice',
@@ -31,46 +34,43 @@ import { UserService } from './user.service';
   styleUrls: ['./demopratice.component.css']
 })
 export class DemopraticeComponent implements OnInit {
-  collections: Array<any> = [];
-  names = [];
-  selected: string = '';
-  selectedAll: any;
+
+  products = [];
 
 
-  categories = [
-    { name: 'Angular' },
-    { name: 'Node' },
-    { name: 'BE' },
-    { name: 'WebDev' }
-  ]
+  getProducts() {
+    return [
+        { 'id': '1', 'title': 'Screw Driver', 'price': 400, 'stock': 11 },
+        { 'id': '2', 'title': 'Nut Volt', 'price': 200, 'stock': 5 },
+        { 'id': '3', 'title': 'Resistor', 'price': 78, 'stock': 45 },
+        { 'id': '4', 'title': 'Tractor', 'price': 20000, 'stock': 1 },
+        { 'id': '5', 'title': 'Roller', 'price': 62, 'stock': 15 },
+    ];
+}
 
-  writers = [
-    { name: 'Krishna' },
-    { name: 'Pooja' },
-    { name: 'Roopa' },
-    { name: 'Alok' }
-  ]
 
-  constructor(private renderer: Renderer2, private articleService: ArticleService,
-    private formBuilder: FormBuilder,
-    private userService: UserService,
-    private bsModalService: BsModalService, private blogService: BlogService, private route: ActivatedRoute) {
-    this.collections = ["Pooja", "Bandana", "Deepak", "Raghab"];
-    //this.names = ["Pooja","Bandana","Raghu","Roopa"];
-    // this.names = [
-    //   { name: 'Turbo', selected: false },
-    //   { name: 'Glider', selected: false },
-    //   { name: 'Blade', selected: false },
-    //   { name: 'Razor', selected: false }
-    // ]
+  constructor() {
+ 
+  }
 
+  productToUpdate: any;
+  changeStockValue(p) {
+      this.productToUpdate = this.products.find(this.findProducts, [p.id]);
+      this.productToUpdate.stock = this.productToUpdate.stock + p.stockvalue;
+  }
+  findProducts(p) {
+      return p.id === this[0];
   }
 
 
-  ngOnInit() {
-    
-    
+
+
+
+  ngOnInit(){
+    this.products = this.getProducts();
   }
+
+
 
  
 
