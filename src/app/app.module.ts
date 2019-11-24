@@ -35,6 +35,12 @@ import { StudentDetailComponent } from './student/student-detail.component';
 import { MainShowComponent } from './student/main-show.component';
 import { StudentRecordService } from './student/student-record.service';
 import { DemochildComponent } from './concrete/demochild.component';
+import { MainpraticeComponent } from './employee/pratice/mainpratice/mainpratice.component';
+import { IpparentComponent } from './inputoutput/ipparent.component';
+import { IpchildComponent } from './inputoutput/ipchild.component';
+import { ChilddetailsComponent } from './inputoutput/childdetails.component';
+import { PaginationComponent } from './common-pagination/pagination.component';
+import { WriterComponent } from './common-pagination/writer.component';
 
 const appRoutes: Routes = [
       { path: 'create', component: CreateComponent },
@@ -47,7 +53,11 @@ const appRoutes: Routes = [
       {path:'listMain',component:ParentComponent},
       {path:'demopratice',component:DemopraticeComponent},
       {path:'my-book/:id',component:DemopraticeComponent},
-      {path:'main-show-student',component:MainShowComponent}
+      {path:'main-show-student',component:MainShowComponent},
+      {path:'main-pratice',component:MainpraticeComponent},
+      {path:'app-ipparent',component:IpparentComponent},
+      {path:'app-pagination',component:PaginationComponent}
+
     ];
 
 @NgModule({
@@ -87,7 +97,13 @@ const appRoutes: Routes = [
         MessageDirective,
         StudentDetailComponent,
         MainShowComponent,
-        DemochildComponent
+        DemochildComponent,
+        MainpraticeComponent,
+        IpparentComponent,
+        IpchildComponent,
+        ChilddetailsComponent,
+        PaginationComponent,
+        WriterComponent,
      
   ],
   providers: [

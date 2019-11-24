@@ -1,0 +1,24 @@
+
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+        <app-ipchild 
+        [templateConfigurable]=templateConfigure 
+        (eachCard)="getCardIndex($event)" 
+        [dataArray]="contracts">
+          <h3 class="myTitle">
+            Input Output Examplevnig
+          </h3>
+        </app-ipchild>  
+    </div>
+    <div class="col-md-6">
+      <app-childdetails *ngIf="selectedData" [data]="selectedData"></app-childdetails>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,69 @@
+<h3>Pratice</h3>
+
+<!-- <div class="container">
+	<div class="text-center mt-5">
+		<div class="row">
+			<div class="col-md-6">
+				<ul class="list-group">
+					<li class="list-group-item">
+						<input type="checkbox" [(ngModel)]="masterSelected" name="list_name" value="m1" 
+						(change)="checkUncheckAll()" />
+						<strong>Select/Unselect all</strong>
+					</li>
+				</ul>
+				<ul class="list-group">
+					<li class="list-group-item" *ngFor="let item of checklist">
+						<input type="checkbox" [(ngModel)]="item.isSelected" name="list_name" 
+						value="{{item.id}}" (change)="isAllSelected()">
+						{{item.value}}
+					</li>
+				</ul>
+			</div>
+			<div class="col-md-6">
+				<code>
+					{{checkedList | json}}
+				</code>
+			</div>
+		</div>
+	</div>
+</div> -->
+
+<div class="container">
+	<div class="text-center mt-5">
+		<div class="row">
+			<div class="col-md-6">
+				<ul class="list-group">
+					<li class="list-group-item">
+						<input type="checkbox" [(ngModel)] = "masterSelected"
+						name="list-item" value="m1" (change)="checkUncheckAll()"/>
+						<strong>Select/Unselect all</strong>
+					</li>
+				</ul>
+				<ul class="list-group">
+					<li class="list-group-item" *ngFor="let item of checklist">
+						<input type="checkbox" [(ngModel)]="item.isSelected" name="list_name"
+						value="{{item.id}}" (change)="isAllSelected()">
+						{{item.value}}
+					</li>
+				</ul>
+			</div>
+			<div>
+				<code>{{checkedList | json}}</code>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+https://stackblitz.com/edit/deep-nested-reactive-form?file=app%2Fapp.component.html
+https://stackblitz.com/edit/angular-complex-reactive-form?file=src%2Fapp%2Fapp.component.ts
+https://stackblitz.com/edit/angular-form-array-example-7kmhuv?file=src%2Fapp%2Fapp.component.ts
+https://stackblitz.com/edit/nested-form-array-example?embed=1&file=src/app/app.component.ts

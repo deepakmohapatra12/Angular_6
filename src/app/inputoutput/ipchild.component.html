@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <ng-content select=".myTitle"></ng-content>
+  </div>
+  <!-- <div class="row">
+    <div class="col-md-{{templateConfigurable?.col}}" *ngFor="let contract of myArray;let i = index">
+      <div class="card" (click)="toogleMark(this.contract)" class="selectCard">
+        <div class="card-header">
+          <p>This is the main title</p>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4">
+              <p style="color:red">{{contract.name}}</p>
+            </div>
+            <div class="col-md-4">
+              <p style="color:red">{{contract.skill}}</p>
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-success" *ngIf="templateConfigurable?.buttonAction">Isolate</button>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer"></div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="row">
+    <div class="col-md-12">
+      <ul>
+        <li *ngFor="let contract of myArray;let i = index" (click)="toogleMark(this.contract)" class="selectCard">
+            <p style="color:red">{{contract.name}}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

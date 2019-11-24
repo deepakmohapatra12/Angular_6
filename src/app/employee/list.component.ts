@@ -63,10 +63,7 @@ export class ListComponent implements OnInit {
           return this.allArticles = data,
           this.filteredData = Object.assign([], this.allArticles)
         }
-      )
-
-
-      
+      ) 
   }
 
   //delete article by Id
